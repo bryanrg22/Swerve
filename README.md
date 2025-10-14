@@ -7,7 +7,6 @@ Swerve - Voltway Procurement Management System - Agentic AI co-pilot that enhanc
 A comprehensive inventory management system for Voltway electric scooters. This application helps manage parts inventory, track orders, analyze sales data, and monitor supplier reliability.
 
 ## Video
-https://github.com/user-attachments/assets/9b1764ae-8a59-47af-8773-70a00b5dfb1d
 
 ## Tech Stack
 
