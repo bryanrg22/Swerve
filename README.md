@@ -20,6 +20,8 @@
 * [🎥 Demo Video](#demo-video)
 * [🤖 AI-Assisted Automation Workflows](#ai-assisted-automation-workflows)
 * [🧠 LangChain Agents (What We Actually Built)](#langchain-agents)
+* [Accuracy and Guardrails](#accuracy-and-guardrails)
+* [Data Handling and Security](#data-handling-and-security)
 * [🛠️ Tech Stack at a Glance](#tech-stack)
 * [🧱 System Architecture (High Level)](#system-architecture)
 * [🔥 Core Features](#core-features)
@@ -28,6 +30,7 @@
 * [📁 Project Structure](#project-structure)
 * [Contributing](#contributing)
 * [License](#license)
+
 
 ---
 
