@@ -88,9 +88,25 @@ The result is a system that **reduces human overhead** while preserving operator
 * Post-hackathon, we were **flown out by the Dryft team** to their **San Francisco Neo offices** for continued collaboration (Neo-funded).
 
 **Winner Image**
-![Image](https://github.com/user-attachments/assets/2152c5bc-5d61-4219-b25d-b1cf08ab4d6a)
 
-**In-office Collaboration** <img width="587" height="720" alt="Image" src="https://github.com/user-attachments/assets/6bb17335-12bb-4153-ac9c-551e367b78ea" />
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/2152c5bc-5d61-4219-b25d-b1cf08ab4d6a" 
+    alt="HackTech 2025 Dryft AI Challenge Winner" 
+    width="520" 
+  />
+</p>
+
+**In-office Collaboration**
+
+<p align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/6bb17335-12bb-4153-ac9c-551e367b78ea" 
+    alt="Post-hackathon collaboration at Dryft's San Francisco office" 
+    width="420" 
+  />
+</p>
+
 
 ---
 
