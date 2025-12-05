@@ -91,21 +91,33 @@ The result is a system that **reduces human overhead** while preserving operator
 
 <p align="center">
   <img 
+    src="https://github.com/user-attachments/assets/71600729-d3a5-437d-945b-41f5dd5f4f0e" 
+    alt="Swerve project image" 
+    width="600"
+  />
+  <img 
     src="https://github.com/user-attachments/assets/2152c5bc-5d61-4219-b25d-b1cf08ab4d6a" 
     alt="HackTech 2025 Dryft AI Challenge Winner" 
-    width="520" 
+    width="320" 
   />
 </p>
+
 
 **In-office Collaboration**
 
 <p align="center">
   <img 
+    src="https://github.com/user-attachments/assets/9bda75a2-ec57-447c-859f-1576c40b95ba" 
+    alt="Swerve project image" 
+    width="320"
+  />
+  <img 
     src="https://github.com/user-attachments/assets/6bb17335-12bb-4153-ac9c-551e367b78ea" 
     alt="Post-hackathon collaboration at Dryft's San Francisco office" 
-    width="420" 
+    width="320" 
   />
 </p>
+
 
 
 ---
