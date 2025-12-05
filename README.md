@@ -149,31 +149,36 @@ A short walkthrough of the Swerve dashboard, inventory logic, and AI-guided proc
 
 <a id="ai-assisted-automation-workflows"></a>
 
-## 🤖 AI-Assisted Automation Workflows
+## AI-Assisted Automation Workflows
 
-Swerve is purpose-built for **AI-assisted automation workflows** that are:
+Swerve uses **LangChain-powered agents** to automate repetitive procurement analysis while keeping decisions grounded in real operational data.
 
-* **Action-oriented** (recommend, draft, alert, summarize)
-* **Data-grounded** (powered by real inventory + supplier + sales tables)
-* **Explainable** (recommendations include the values used)
-* **Operator-controlled** (humans approve or override)
+### Workflow Modules
 
-### Example Workflow Modules
+1. **Inventory Health Automation**
 
-1. **Low Stock → Reorder Recommendation**
-   Detects risk of stockout and recommends timing + quantity based on min-stock, reorder rules, and lead time.
+   * Detects low stock, blocked parts, and min-stock violations.
+   * Flags parts with high downstream impact via BOM relationships.
 
-2. **Supplier Risk → Alternate Sourcing**
-   Flags low reliability or long lead-time suppliers and surfaces safer alternatives.
+2. **Order Risk Automation**
 
-3. **Sales Trend → Inventory Forecast**
-   Summarizes demand signals and highlights parts likely to spike in usage.
+   * Tracks late-risk using expected vs actual delivery patterns.
+   * Highlights parts whose delays would stall high-volume models.
 
-4. **Data Import → Quality Checks + Summary**
-   After ingesting parts/orders/sales, Swerve validates consistency and produces a clean “what changed” briefing.
+3. **Supplier Reliability Automation**
 
-5. **Notifications → Slack-Ready Briefs**
-   Converts operational events into structured, readable updates.
+   * Ranks suppliers by reliability rating, lead time, and price signals.
+   * Suggests fallback suppliers when risk increases.
+
+4. **Demand-Aware Reorder Suggestions**
+
+   * Connects recent sales trends to projected consumption.
+   * Recommends reorder quantity and timing aligned to reorder intervals.
+
+5. **Slack Insight Automation**
+
+   * Converts key changes (low stock, delivery slippage, supplier risk)
+     into concise team alerts.
 
 ---
 
@@ -201,23 +206,124 @@ LangChain gave us a clean, modular way to:
 
 ### Agent Behavior (High-Level)
 
-A typical Swerve agent flow looks like:
+Swerve’s procurement copilot is designed around a simple idea:
 
-1. **User asks a procurement question**
-   e.g., “Which parts are most likely to stock out next week?”
+**You ask a procurement question → the system routes the task → a specialist agent pulls the right data → you get an actionable answer.**
 
-2. **Agent selects tools**
-   It queries relevant Firestore collections (parts, orders, supply, sales).
+Here’s the lifecycle:
 
-3. **Agent runs a multi-step reasoning plan**
-   It evaluates stock level vs min stock, lead time, current order status, and optional demand signals.
+1. **Engineer or ops user asks a question**
 
-4. **Agent outputs structured, actionable results**
-   Recommendations include *why* and *which fields triggered the decision.*
+   * Example: “Are we at risk of running out of P301 next week?”
+   * Or: “Which supplier is least reliable for motor assemblies?”
 
-This is the difference between a chatbot and an **operations-grade co-pilot**.
+2. **A coordinator model identifies intent**
+
+   * It determines whether this is primarily inventory risk, order tracking, supplier reliability, or sales-driven demand.
+
+3. **The request is routed to a specialized LangChain agent**
+
+   * **Inventory Agent**
+   * **Orders Agent**
+   * **Supplier Agent**
+   * **Sales/Forecast Agent**
+   * **Notifications Agent** (e.g., Slack summaries)
+
+4. **That agent retrieves only task-relevant context**
+
+   * Instead of loading the whole database, it queries **just** what’s needed:
+
+     * part metadata, stock + min-stock,
+     * open orders + lead times,
+     * supplier reliability,
+     * recent sales linked to impacted models.
+
+5. **The agent uses tools to compute + explain**
+
+   * The output is grounded in Firestore records and structured rules.
+
+6. **Swerve returns a recommendation**
+
+   * Clear next steps, supporting numbers, and assumptions when needed.
+
+This makes Swerve **automation-first** without being a black box.
+
+
+### Why Agents (Not Just One Chatbot)?
+
+Agents let us:
+
+* **constrain tool access by role**
+* keep context **narrow and relevant**
+* isolate logic per domain
+* make the system easier to extend with new workflows.
+
 
 ---
+
+
+## Accuracy and Guardrails
+
+Swerve is designed for **operations-grade reliability**, not generic chat.
+
+We improve accuracy through:
+
+* **Tool-grounded answers**
+
+  * Agents retrieve live, structured Firestore data rather than relying on memory.
+
+* **Scoped context**
+
+  * Each agent only loads the records required for the current task.
+
+* **Rule + data validation**
+
+  * Reorder suggestions check against:
+
+    * `min_stock`,
+    * `blocked` status,
+    * lead time constraints,
+    * BOM dependencies.
+
+* **Structured outputs**
+
+  * Responses are shaped into consistent formats
+    (risk summary → evidence → recommended next action).
+
+* **Graceful fallback**
+
+  * When data is incomplete, Swerve surfaces assumptions explicitly
+    and suggests what to verify next (e.g., missing orders or outdated supplier ratings).
+
+---
+
+
+## Data Handling and Security
+
+Swerve follows a **least-privilege, operational-data-first** approach:
+
+* **Firestore as source of truth**
+
+  * Orders, parts, sales, and supplier metrics are stored with role-based access.
+
+* **Secure auth**
+
+  * Access is gated through Firebase Authentication.
+
+* **Isolated file handling**
+
+  * Any imported datasets or attachments are stored in Firebase Storage
+    with scoped permissions tied to user roles.
+
+* **Minimal AI data exposure**
+
+  * Agents pass only the task-relevant fields to the model
+    (not entire collections or raw dumps).
+
+* **Audit-friendly design**
+
+  * Recommendations can be traced back to
+    part records, orders, supplier stats, and sales documents.
 
 <a id="tech-stack"></a>
 
