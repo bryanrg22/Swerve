@@ -96,7 +96,7 @@ The result is a system that **reduces human overhead** while preserving operator
   <img 
     src="https://github.com/user-attachments/assets/71600729-d3a5-437d-945b-41f5dd5f4f0e" 
     alt="Swerve project image" 
-    width="600"
+    width="520"
   />
   <img 
     src="https://github.com/user-attachments/assets/2152c5bc-5d61-4219-b25d-b1cf08ab4d6a" 
