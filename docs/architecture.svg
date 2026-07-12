@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 950" font-family="'DM Sans', -apple-system, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="mGold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#E8A838"/>
+    </marker>
+    <marker id="mAsync" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9a948a"/>
+    </marker>
+    <marker id="mInt" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b0aaa0"/>
+    </marker>
+  </defs>
+
+  <!-- background panel -->
+  <rect x="8" y="8" width="1384" height="934" rx="26" fill="#242220"/>
+
+  <!-- group containers -->
+  <rect x="30" y="30" width="420" height="660" rx="20" fill="#2e2b28" stroke="#4a463f" stroke-width="2"/>
+  <text x="54" y="64" font-size="24" font-weight="bold" fill="#c9c3b8">Browser</text>
+
+  <rect x="580" y="30" width="440" height="660" rx="20" fill="#2e2b28" stroke="#4a463f" stroke-width="2"/>
+  <text x="604" y="64" font-size="24" font-weight="bold" fill="#c9c3b8">Dev machine (localhost)</text>
+
+  <rect x="30" y="720" width="1342" height="184" rx="20" fill="#2e2b28" stroke="#4a463f" stroke-width="2"/>
+  <text x="54" y="752" font-size="24" font-weight="bold" fill="#c9c3b8">Cloud</text>
+
+  <!-- ================= arrows (under labels, over groups) ================= -->
+  <!-- SPA -> Flask: chat -->
+  <path d="M428 125 H610" fill="none" stroke="#E8A838" stroke-width="3" marker-end="url(#mGold)"/>
+  <text x="519" y="113" font-size="17" fill="#cfc9bf" text-anchor="middle">POST /api/chat</text>
+  <!-- SPA -> Flask: CRUD -->
+  <path d="M428 185 H610" fill="none" stroke="#E8A838" stroke-width="3" marker-end="url(#mGold)"/>
+  <text x="519" y="173" font-size="17" fill="#cfc9bf" text-anchor="middle">CRUD /api/&lt;coll&gt;</text>
+  <!-- Data import -> Flask (async, post-import recap) -->
+  <path d="M428 322 H540 V205 H610" fill="none" stroke="#9a948a" stroke-width="2.5" stroke-dasharray="7 7" marker-end="url(#mAsync)"/>
+  <text x="436" y="344" font-size="17" fill="#cfc9bf">post-import recap</text>
+  <!-- Data import -> Firestore -->
+  <path d="M428 390 H470 V764" fill="none" stroke="#E8A838" stroke-width="3" marker-end="url(#mGold)"/>
+  <text x="350" y="708" font-size="17" fill="#cfc9bf">setDoc() JSON</text>
+  <!-- Firebase client -> Firestore -->
+  <path d="M240 606 V764" fill="none" stroke="#E8A838" stroke-width="3" marker-end="url(#mGold)"/>
+  <text x="252" y="646" font-size="17" fill="#cfc9bf">getDocs() dashboard reads</text>
+  <!-- Flask -> Hugo (in-process) -->
+  <path d="M800 218 V244" fill="none" stroke="#b0aaa0" stroke-width="2.5" marker-end="url(#mInt)"/>
+  <text x="814" y="236" font-size="17" fill="#cfc9bf">hugo.chat(query)</text>
+  <!-- BOM graph -> Hugo -->
+  <path d="M800 396 V370" fill="none" stroke="#b0aaa0" stroke-width="2.5" marker-end="url(#mInt)"/>
+  <text x="814" y="388" font-size="17" fill="#cfc9bf">specs↔parts table</text>
+  <!-- Hugo -> OpenAI -->
+  <path d="M990 320 H1012 V800 H1000" fill="none" stroke="#E8A838" stroke-width="3" marker-end="url(#mGold)"/>
+  <text x="1026" y="344" font-size="17" fill="#cfc9bf">chat.completions</text>
+  <!-- Flask -> Slack (async) -->
+  <path d="M990 150 H1180 V764" fill="none" stroke="#9a948a" stroke-width="2.5" stroke-dasharray="7 7" marker-end="url(#mAsync)"/>
+  <text x="1030" y="138" font-size="17" fill="#cfc9bf">POST /api/notify-slack</text>
+  <!-- Hugo -> Firestore -->
+  <path d="M610 340 H595 V790 H500" fill="none" stroke="#b0aaa0" stroke-width="2.5" marker-end="url(#mInt)"/>
+  <text x="472" y="708" font-size="17" fill="#cfc9bf">stream() reads</text>
+  <!-- Seed scripts -> Firestore -->
+  <path d="M630 674 V830 H500" fill="none" stroke="#b0aaa0" stroke-width="2.5" marker-end="url(#mInt)"/>
+  <text x="516" y="818" font-size="17" fill="#cfc9bf">one-time seed</text>
+
+  <!-- ================= Browser boxes ================= -->
+  <rect x="52" y="92" width="376" height="126" rx="14" fill="#0E9F7A"/>
+  <text x="67" y="126" font-size="25" font-weight="bold" fill="#ffffff">React 18 SPA (Vite 6)</text>
+  <text x="67" y="154" font-size="18" fill="#e6e0d6">Dashboard·HugoAI·Map +7 pages</text>
+  <text x="67" y="178" font-size="18" fill="#e6e0d6">MapLibre GL globe · Recharts</text>
+  <text x="67" y="202" font-size="18" fill="#e6e0d6">Vite proxy /api → :5050</text>
+
+  <rect x="52" y="300" width="376" height="126" rx="14" fill="#B8842C"/>
+  <text x="67" y="334" font-size="25" font-weight="bold" fill="#ffffff">Data import UI</text>
+  <text x="67" y="362" font-size="18" fill="#e6e0d6">FileUploader.jsx drag-and-drop</text>
+  <text x="67" y="386" font-size="18" fill="#e6e0d6">parts/orders/sales JSON→setDoc</text>
+  <text x="67" y="410" font-size="18" fill="#e6e0d6">then Hugo recap + Slack alert</text>
+
+  <rect x="52" y="480" width="376" height="126" rx="14" fill="#0E9F7A"/>
+  <text x="67" y="514" font-size="25" font-weight="bold" fill="#ffffff">Firebase JS client</text>
+  <text x="67" y="542" font-size="18" fill="#e6e0d6">useCollection(): getDocs()</text>
+  <text x="67" y="566" font-size="18" fill="#e6e0d6">where / orderBy / limit</text>
+  <text x="67" y="590" font-size="18" fill="#e6e0d6">demo fallback on perm-denied</text>
+
+  <!-- ================= Dev machine boxes ================= -->
+  <rect x="610" y="92" width="380" height="126" rx="14" fill="#0E9F7A"/>
+  <text x="625" y="126" font-size="25" font-weight="bold" fill="#ffffff">Flask API :5050 (app.py)</text>
+  <text x="625" y="154" font-size="18" fill="#e6e0d6">CRUD /api/&lt;collection&gt;/&lt;id&gt;</text>
+  <text x="625" y="178" font-size="18" fill="#e6e0d6">/api/chat · /api/notify-slack</text>
+  <text x="625" y="202" font-size="18" fill="#e6e0d6">firebase-admin + flask-cors</text>
+
+  <rect x="610" y="244" width="380" height="126" rx="14" fill="#0E9F7A"/>
+  <text x="625" y="278" font-size="25" font-weight="bold" fill="#ffffff">Hugo LangChain agent</text>
+  <text x="625" y="306" font-size="18" fill="#e6e0d6">AgentExecutor · gpt-3.5-turbo</text>
+  <text x="625" y="330" font-size="18" fill="#e6e0d6">6 tools: stocks·orders·alerts</text>
+  <text x="625" y="354" font-size="18" fill="#e6e0d6">loads Firestore data at boot</text>
+
+  <rect x="610" y="396" width="380" height="126" rx="14" fill="#0E9F7A"/>
+  <text x="625" y="430" font-size="25" font-weight="bold" fill="#ffffff">BOM graph (graph.py)</text>
+  <text x="625" y="458" font-size="18" fill="#e6e0d6">NetworkX specs↔parts DiGraph</text>
+  <text x="625" y="482" font-size="18" fill="#e6e0d6">edge color = stock health %</text>
+  <text x="625" y="506" font-size="18" fill="#e6e0d6">parts_summary.csv → Hugo</text>
+
+  <rect x="610" y="548" width="380" height="126" rx="14" fill="#6D5BD8"/>
+  <text x="625" y="582" font-size="25" font-weight="bold" fill="#ffffff">Seed &amp; ingest scripts</text>
+  <text x="625" y="610" font-size="18" fill="#e6e0d6">upload_data.py → 5 collections</text>
+  <text x="625" y="634" font-size="18" fill="#e6e0d6">supply IDs: {supplier}_{part}</text>
+  <text x="625" y="658" font-size="18" fill="#e6e0d6">raw data: 10 .eml + 6 spec PDFs</text>
+
+  <!-- ================= Cloud boxes ================= -->
+  <rect x="110" y="764" width="390" height="126" rx="14" fill="#6D5BD8"/>
+  <text x="125" y="798" font-size="25" font-weight="bold" fill="#ffffff">Firebase Firestore</text>
+  <text x="125" y="826" font-size="18" fill="#e6e0d6">parts·orders·sales·supply·specs</text>
+  <text x="125" y="850" font-size="18" fill="#e6e0d6">bill_of_materials[] · min_stock</text>
+  <text x="125" y="874" font-size="18" fill="#e6e0d6">browser SDK + admin SDK access</text>
+
+  <rect x="650" y="764" width="350" height="126" rx="14" fill="#B34A3E"/>
+  <text x="665" y="798" font-size="25" font-weight="bold" fill="#ffffff">OpenAI API</text>
+  <text x="665" y="826" font-size="18" fill="#e6e0d6">gpt-3.5-turbo agent routing</text>
+  <text x="665" y="850" font-size="18" fill="#e6e0d6">gpt-4o JSON + gpt-4 eval</text>
+  <text x="665" y="874" font-size="18" fill="#e6e0d6">temp 0–0.2 · max_tokens 700</text>
+
+  <rect x="1030" y="764" width="330" height="126" rx="14" fill="#B34A3E"/>
+  <text x="1045" y="798" font-size="25" font-weight="bold" fill="#ffffff">Slack Web API</text>
+  <text x="1045" y="826" font-size="18" fill="#e6e0d6">chat_postMessage → bot DM</text>
+  <text x="1045" y="850" font-size="18" fill="#e6e0d6">':warning: INVENTORY ALERT'</text>
+  <text x="1045" y="874" font-size="18" fill="#e6e0d6">SLACK_BOT_TOKEN · CHANNEL</text>
+
+  <!-- ================= legend ================= -->
+  <path d="M60 921 H110" fill="none" stroke="#E8A838" stroke-width="3" marker-end="url(#mGold)"/>
+  <text x="122" y="927" font-size="17" fill="#cfc9bf">primary user/task flow</text>
+  <path d="M340 921 H390" fill="none" stroke="#9a948a" stroke-width="2.5" stroke-dasharray="7 7" marker-end="url(#mAsync)"/>
+  <text x="402" y="927" font-size="17" fill="#cfc9bf">async / background</text>
+  <path d="M640 921 H690" fill="none" stroke="#b0aaa0" stroke-width="2.5" marker-end="url(#mInt)"/>
+  <text x="702" y="927" font-size="17" fill="#cfc9bf">internal data flow</text>
+</svg>
