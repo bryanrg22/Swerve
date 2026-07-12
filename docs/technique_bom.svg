@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 950" font-family="'DM Sans', -apple-system, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="mP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#E8A838"/></marker>
+    <marker id="mI" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b0aaa0"/></marker>
+    <marker id="eR" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#B34A3E"/></marker>
+    <marker id="eO" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#E8A838"/></marker>
+    <marker id="eY" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#E8D060"/></marker>
+  </defs>
+
+  <rect x="8" y="8" width="1384" height="934" rx="26" fill="#242220"/>
+
+  <!-- ══════ Group: build pipeline ══════ -->
+  <rect x="40" y="60" width="360" height="680" rx="20" fill="#2e2b28" stroke="#4a463f" stroke-width="2"/>
+  <text x="60" y="99" font-size="24" font-weight="700" fill="#c9c3b8">graph.py — build</text>
+
+  <rect x="60" y="115" width="320" height="112" rx="14" fill="#6D5BD8"/>
+  <text x="78" y="147" font-size="25" font-weight="700" fill="#ffffff">Firestore inputs</text>
+  <text x="78" y="173" font-size="18" fill="#e6e0d6">parts — 39 docs</text>
+  <text x="78" y="194" font-size="18" fill="#e6e0d6">specs — 6 docs,</text>
+  <text x="78" y="215" font-size="18" fill="#e6e0d6">14 BOM rows each</text>
+
+  <line x1="220" y1="227" x2="220" y2="273" stroke="#b0aaa0" stroke-width="2.5" marker-end="url(#mI)"/>
+  <text x="232" y="256" font-size="17" fill="#cfc9bf">.stream()</text>
+
+  <rect x="60" y="277" width="320" height="112" rx="14" fill="#0E9F7A"/>
+  <text x="78" y="309" font-size="25" font-weight="700" fill="#ffffff">create_graph(db)</text>
+  <text x="78" y="335" font-size="18" fill="#e6e0d6">nx.DiGraph — 45 nodes</text>
+  <text x="78" y="356" font-size="18" fill="#e6e0d6">84 edges: qty_needed,</text>
+  <text x="78" y="377" font-size="18" fill="#e6e0d6">stock % · blocked flag</text>
+
+  <line x1="220" y1="389" x2="220" y2="435" stroke="#b0aaa0" stroke-width="2.5" marker-end="url(#mI)"/>
+  <text x="232" y="418" font-size="17" fill="#cfc9bf">matplotlib · pandas</text>
+
+  <rect x="60" y="439" width="320" height="112" rx="14" fill="#B8842C"/>
+  <text x="78" y="471" font-size="25" font-weight="700" fill="#ffffff">Artifacts</text>
+  <text x="78" y="497" font-size="18" fill="#e6e0d6">specs_parts_graph.png</text>
+  <text x="78" y="518" font-size="18" fill="#e6e0d6">critical_parts_graph.png</text>
+  <text x="78" y="539" font-size="18" fill="#e6e0d6">parts_summary.csv — 39 rows</text>
+
+  <line x1="220" y1="551" x2="220" y2="597" stroke="#b0aaa0" stroke-width="2.5" marker-end="url(#mI)"/>
+  <text x="232" y="580" font-size="17" fill="#cfc9bf">summary table</text>
+
+  <rect x="60" y="601" width="320" height="112" rx="14" fill="#0E9F7A"/>
+  <text x="78" y="633" font-size="25" font-weight="700" fill="#ffffff">Hugo's graph tools</text>
+  <text x="78" y="659" font-size="18" fill="#e6e0d6">relationship_evaluation +</text>
+  <text x="78" y="680" font-size="18" fill="#e6e0d6">inventory_alerts reason</text>
+  <text x="78" y="701" font-size="18" fill="#e6e0d6">over the summary table</text>
+
+  <!-- pipeline -> drawn graph -->
+  <line x1="380" y1="333" x2="436" y2="333" stroke="#E8A838" stroke-width="3" marker-end="url(#mP)"/>
+
+  <!-- ══════ Group: the real critical subgraph ══════ -->
+  <rect x="440" y="60" width="930" height="680" rx="20" fill="#2e2b28" stroke="#4a463f" stroke-width="2"/>
+  <text x="460" y="99" font-size="24" font-weight="700" fill="#c9c3b8">Critical subgraph — critical.json</text>
+  <text x="1350" y="97" font-size="18" fill="#8a847a" text-anchor="end">full graph: 45 nodes · 84 edges (basic.json)</text>
+
+  <!-- edges: spec bottom (y=186) -> circle top (y=508) -->
+  <!-- S1 V2 -->
+  <line x1="552" y1="186" x2="480" y2="506" stroke="#B34A3E" stroke-width="3.5" marker-end="url(#eR)"/>
+  <line x1="568" y1="186" x2="562" y2="506" stroke="#E8A838" stroke-width="3" marker-end="url(#eO)"/>
+  <line x1="584" y1="186" x2="644" y2="506" stroke="#E8D060" stroke-width="2.5" marker-end="url(#eY)"/>
+  <line x1="600" y1="186" x2="726" y2="506" stroke="#E8D060" stroke-width="2.5" marker-end="url(#eY)"/>
+  <line x1="616" y1="186" x2="808" y2="506" stroke="#E8D060" stroke-width="3.5" marker-end="url(#eY)"/>
+  <line x1="632" y1="186" x2="890" y2="506" stroke="#E8D060" stroke-width="2.5" marker-end="url(#eY)"/>
+  <line x1="648" y1="186" x2="972" y2="506" stroke="#E8D060" stroke-width="2.5" marker-end="url(#eY)"/>
+  <!-- S2 V2 -->
+  <line x1="880" y1="186" x2="726" y2="506" stroke="#E8D060" stroke-width="2.5" marker-end="url(#eY)"/>
+  <line x1="900" y1="186" x2="808" y2="506" stroke="#E8D060" stroke-width="3.5" marker-end="url(#eY)"/>
+  <line x1="920" y1="186" x2="890" y2="506" stroke="#E8D060" stroke-width="2.5" marker-end="url(#eY)"/>
+  <line x1="940" y1="186" x2="972" y2="506" stroke="#E8D060" stroke-width="2.5" marker-end="url(#eY)"/>
+  <line x1="960" y1="186" x2="1054" y2="506" stroke="#B34A3E" stroke-width="3.5" marker-end="url(#eR)"/>
+  <line x1="980" y1="186" x2="1136" y2="506" stroke="#B34A3E" stroke-width="3.5" marker-end="url(#eR)"/>
+  <!-- S3 V2 -->
+  <line x1="1055" y1="186" x2="726" y2="506" stroke="#E8D060" stroke-width="2.5" marker-end="url(#eY)"/>
+  <line x1="1080" y1="186" x2="808" y2="506" stroke="#E8D060" stroke-width="3.5" marker-end="url(#eY)"/>
+  <line x1="1105" y1="186" x2="890" y2="506" stroke="#E8D060" stroke-width="2.5" marker-end="url(#eY)"/>
+  <line x1="1130" y1="186" x2="972" y2="506" stroke="#E8D060" stroke-width="2.5" marker-end="url(#eY)"/>
+  <line x1="1155" y1="186" x2="1218" y2="506" stroke="#E8D060" stroke-width="2.5" marker-end="url(#eY)"/>
+  <!-- S2 V1 -->
+  <line x1="1280" y1="186" x2="1300" y2="506" stroke="#E8D060" stroke-width="2.5" marker-end="url(#eY)"/>
+
+  <!-- spec nodes -->
+  <rect x="535" y="130" width="130" height="56" rx="12" fill="#6D5BD8"/>
+  <text x="600" y="155" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">S1 V2</text>
+  <text x="600" y="176" font-size="14" fill="#e6e0d6" text-anchor="middle">spec</text>
+  <rect x="865" y="130" width="130" height="56" rx="12" fill="#6D5BD8"/>
+  <text x="930" y="155" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">S2 V2</text>
+  <text x="930" y="176" font-size="14" fill="#e6e0d6" text-anchor="middle">spec</text>
+  <rect x="1040" y="130" width="130" height="56" rx="12" fill="#6D5BD8"/>
+  <text x="1105" y="155" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">S3 V2</text>
+  <text x="1105" y="176" font-size="14" fill="#e6e0d6" text-anchor="middle">spec</text>
+  <rect x="1215" y="130" width="130" height="56" rx="12" fill="#6D5BD8"/>
+  <text x="1280" y="155" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">S2 V1</text>
+  <text x="1280" y="176" font-size="14" fill="#e6e0d6" text-anchor="middle">spec</text>
+
+  <!-- part nodes -->
+  <circle cx="480" cy="540" r="30" fill="#35322e" stroke="#6b655c" stroke-width="1.5"/>
+  <text x="480" y="546" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">P304</text>
+  <circle cx="562" cy="540" r="30" fill="#35322e" stroke="#6b655c" stroke-width="1.5"/>
+  <text x="562" y="546" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">P305</text>
+  <circle cx="644" cy="540" r="30" fill="#35322e" stroke="#6b655c" stroke-width="1.5"/>
+  <text x="644" y="546" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">P307</text>
+  <circle cx="726" cy="540" r="30" fill="#35322e" stroke="#6b655c" stroke-width="1.5"/>
+  <text x="726" y="546" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">P329</text>
+  <circle cx="808" cy="540" r="30" fill="#35322e" stroke="#6b655c" stroke-width="1.5"/>
+  <text x="808" y="546" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">P330</text>
+  <circle cx="890" cy="540" r="30" fill="#35322e" stroke="#6b655c" stroke-width="1.5"/>
+  <text x="890" y="546" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">P331</text>
+  <circle cx="972" cy="540" r="30" fill="#35322e" stroke="#6b655c" stroke-width="1.5"/>
+  <text x="972" y="546" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">P332</text>
+  <circle cx="1054" cy="540" r="30" fill="#35322e" stroke="#6b655c" stroke-width="1.5"/>
+  <text x="1054" y="546" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">P312</text>
+  <circle cx="1136" cy="540" r="30" fill="#35322e" stroke="#6b655c" stroke-width="1.5"/>
+  <text x="1136" y="546" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">P313</text>
+  <circle cx="1218" cy="540" r="30" fill="#35322e" stroke="#6b655c" stroke-width="1.5"/>
+  <text x="1218" y="546" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">P323</text>
+  <circle cx="1300" cy="540" r="30" fill="#35322e" stroke="#6b655c" stroke-width="1.5"/>
+  <text x="1300" y="546" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">P308</text>
+
+  <!-- stock-status labels (real values from critical.json) -->
+  <text x="480" y="595" font-size="15" font-weight="700" fill="#B34A3E" text-anchor="middle">blocked</text>
+  <text x="562" y="595" font-size="15" font-weight="700" fill="#E8A838" text-anchor="middle">32%</text>
+  <text x="644" y="595" font-size="15" font-weight="700" fill="#E8D060" text-anchor="middle">62%</text>
+  <text x="726" y="595" font-size="15" font-weight="700" fill="#E8D060" text-anchor="middle">73%</text>
+  <text x="808" y="595" font-size="15" font-weight="700" fill="#E8D060" text-anchor="middle">59%</text>
+  <text x="890" y="595" font-size="15" font-weight="700" fill="#E8D060" text-anchor="middle">73%</text>
+  <text x="972" y="595" font-size="15" font-weight="700" fill="#E8D060" text-anchor="middle">67%</text>
+  <text x="1054" y="595" font-size="15" font-weight="700" fill="#B34A3E" text-anchor="middle">blocked</text>
+  <text x="1136" y="595" font-size="15" font-weight="700" fill="#B34A3E" text-anchor="middle">blocked</text>
+  <text x="1218" y="595" font-size="15" font-weight="700" fill="#E8D060" text-anchor="middle">83%</text>
+  <text x="1300" y="595" font-size="15" font-weight="700" fill="#E8D060" text-anchor="middle">67%</text>
+
+  <!-- part names, staggered rows -->
+  <text x="480" y="622" font-size="14" fill="#8a847a" text-anchor="middle">750W motor V2</text>
+  <text x="562" y="644" font-size="14" fill="#8a847a" text-anchor="middle">Li-Po battery</text>
+  <text x="644" y="622" font-size="14" fill="#8a847a" text-anchor="middle">carbon frame</text>
+  <text x="726" y="644" font-size="14" fill="#8a847a" text-anchor="middle">OLED display</text>
+  <text x="808" y="622" font-size="14" fill="#8a847a" text-anchor="middle">12in wheel ×2</text>
+  <text x="890" y="644" font-size="14" fill="#8a847a" text-anchor="middle">hydraulic brake</text>
+  <text x="972" y="622" font-size="14" fill="#8a847a" text-anchor="middle">LED headlight</text>
+  <text x="1054" y="644" font-size="14" fill="#8a847a" text-anchor="middle">750W motor V2</text>
+  <text x="1136" y="622" font-size="14" fill="#8a847a" text-anchor="middle">Li-Po battery</text>
+  <text x="1218" y="644" font-size="14" fill="#8a847a" text-anchor="middle">carbon frame</text>
+  <text x="1300" y="622" font-size="14" fill="#8a847a" text-anchor="middle">500W motor</text>
+
+  <text x="905" y="692" font-size="18" fill="#e6e0d6" text-anchor="middle">edge color = stock health of the part feeding that spec · line width ∝ qty_needed</text>
+  <text x="905" y="717" font-size="16" fill="#8a847a" text-anchor="middle">P304 · P312 · P313 sit at 240–288% stock, but the blocked flag overrides stock health</text>
+
+  <!-- ══════ Group: status census ══════ -->
+  <rect x="40" y="770" width="1330" height="150" rx="20" fill="#2e2b28" stroke="#4a463f" stroke-width="2"/>
+  <text x="60" y="808" font-size="24" font-weight="700" fill="#c9c3b8">Status census — parts_summary.csv (39 parts)</text>
+
+  <rect x="60" y="828" width="295" height="64" rx="14" fill="#242220" stroke="#B34A3E" stroke-width="2"/>
+  <text x="86" y="873" font-size="40" font-weight="700" fill="#B34A3E">3</text>
+  <text x="128" y="855" font-size="15" font-weight="700" fill="#e6e0d6">Blocked: P304 P312 P313</text>
+  <text x="128" y="878" font-size="15" fill="#8a847a">flag overrides stock %</text>
+
+  <rect x="385" y="828" width="295" height="64" rx="14" fill="#242220" stroke="#E8A838" stroke-width="2"/>
+  <text x="411" y="873" font-size="40" font-weight="700" fill="#E8A838">1</text>
+  <text x="453" y="855" font-size="15" font-weight="700" fill="#e6e0d6">Critical: P305</text>
+  <text x="453" y="878" font-size="15" fill="#8a847a">stock &lt; 50% of min_stock</text>
+
+  <rect x="710" y="828" width="295" height="64" rx="14" fill="#242220" stroke="#E8D060" stroke-width="2"/>
+  <text x="736" y="873" font-size="40" font-weight="700" fill="#E8D060">7</text>
+  <text x="778" y="855" font-size="15" font-weight="700" fill="#e6e0d6">Low</text>
+  <text x="778" y="878" font-size="15" fill="#8a847a">50–99% of min_stock</text>
+
+  <rect x="1035" y="828" width="295" height="64" rx="14" fill="#242220" stroke="#0E9F7A" stroke-width="2"/>
+  <text x="1061" y="873" font-size="40" font-weight="700" fill="#0E9F7A">28</text>
+  <text x="1121" y="855" font-size="15" font-weight="700" fill="#e6e0d6">Good</text>
+  <text x="1121" y="878" font-size="15" fill="#8a847a">≥ 100% of min_stock</text>
+
+  <text x="1360" y="938" font-size="15" fill="#8a847a" text-anchor="end">sources: backEnd/hugo/critical.json · basic.json · parts_summary.csv · graph.py</text>
+</svg>
