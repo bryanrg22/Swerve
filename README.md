@@ -1,5 +1,9 @@
 # Swerve – *Agentic Procurement, Built for Real Operations*
 
+## System Architecture
+
+<img src="docs/architecture.svg" alt="System architecture diagram" width="900"/>
+
 ## 1st Place – Dryft AI Challenge @ HackTech 2025
 
 <img width="1099" height="347" alt="Swerve Logo" src="https://github.com/user-attachments/assets/146e3557-b0c6-434c-b8db-46f3a3ea8899" />
