@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 950" font-family="'DM Sans', -apple-system, 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="mP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#E8A838"/></marker>
+    <marker id="mI" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b0aaa0"/></marker>
+    <marker id="mA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9a948a"/></marker>
+  </defs>
+
+  <rect x="8" y="8" width="1384" height="934" rx="26" fill="#242220"/>
+
+  <!-- ══════ Group: Flask API ══════ -->
+  <rect x="40" y="60" width="310" height="395" rx="20" fill="#2e2b28" stroke="#4a463f" stroke-width="2"/>
+  <text x="60" y="99" font-size="24" font-weight="700" fill="#c9c3b8">Flask API :5050</text>
+
+  <rect x="58" y="115" width="274" height="125" rx="14" fill="#B8842C"/>
+  <text x="76" y="148" font-size="25" font-weight="700" fill="#ffffff">POST /api/chat</text>
+  <text x="76" y="175" font-size="18" fill="#e6e0d6">single-shot {query}</text>
+  <text x="76" y="197" font-size="18" fill="#e6e0d6">from HugoChat UI, or</text>
+  <text x="76" y="219" font-size="18" fill="#e6e0d6">auto after data import</text>
+
+  <rect x="58" y="295" width="274" height="125" rx="14" fill="#B8842C"/>
+  <text x="76" y="328" font-size="25" font-weight="700" fill="#ffffff">/api/notify-slack</text>
+  <text x="76" y="355" font-size="18" fill="#e6e0d6">browser formats reply</text>
+  <text x="76" y="377" font-size="18" fill="#e6e0d6">into :warning: alert</text>
+  <text x="76" y="399" font-size="18" fill="#e6e0d6">text, post_message()</text>
+
+  <!-- ══════ Group: Hugo AgentExecutor ══════ -->
+  <rect x="420" y="60" width="650" height="680" rx="20" fill="#2e2b28" stroke="#4a463f" stroke-width="2"/>
+  <text x="440" y="99" font-size="24" font-weight="700" fill="#c9c3b8">Hugo AgentExecutor — hugo.py</text>
+
+  <rect x="445" y="115" width="600" height="135" rx="14" fill="#0E9F7A"/>
+  <text x="463" y="148" font-size="25" font-weight="700" fill="#ffffff">gpt-3.5-turbo agent router</text>
+  <text x="463" y="175" font-size="18" fill="#e6e0d6">ChatOpenAI(temperature=0).bind_tools(6 tools)</text>
+  <text x="463" y="197" font-size="18" fill="#e6e0d6">ConversationBufferMemory + tool-call scratchpad</text>
+  <text x="463" y="219" font-size="18" fill="#e6e0d6">OpenAIToolsAgentOutputParser, handle_parsing_errors</text>
+
+  <!-- tools col 1 (pure Python) -->
+  <rect x="445" y="310" width="285" height="115" rx="14" fill="#0E9F7A"/>
+  <text x="463" y="344" font-size="25" font-weight="700" fill="#ffffff">Low-stock scan</text>
+  <text x="463" y="371" font-size="18" fill="#e6e0d6">check_low_stocks()</text>
+  <text x="463" y="392" font-size="18" fill="#e6e0d6">quantity &lt;= min_stock</text>
+  <text x="463" y="413" font-size="18" fill="#e6e0d6">pure-Python filter</text>
+
+  <rect x="445" y="455" width="285" height="115" rx="14" fill="#0E9F7A"/>
+  <text x="463" y="489" font-size="25" font-weight="700" fill="#ffffff">Supplier lookup</text>
+  <text x="463" y="516" font-size="18" fill="#e6e0d6">find_supplier_for_part</text>
+  <text x="463" y="537" font-size="18" fill="#e6e0d6">supply rows by part_id</text>
+  <text x="463" y="558" font-size="18" fill="#e6e0d6">pure-Python filter</text>
+
+  <rect x="445" y="600" width="285" height="115" rx="14" fill="#0E9F7A"/>
+  <text x="463" y="634" font-size="25" font-weight="700" fill="#ffffff">Pending orders</text>
+  <text x="463" y="661" font-size="18" fill="#e6e0d6">check_pending_orders()</text>
+  <text x="463" y="682" font-size="18" fill="#e6e0d6">status == 'ordered'</text>
+  <text x="463" y="703" font-size="18" fill="#e6e0d6">pure-Python filter</text>
+
+  <!-- tools col 2 (nested LLM) -->
+  <rect x="760" y="310" width="285" height="115" rx="14" fill="#0E9F7A"/>
+  <text x="778" y="344" font-size="25" font-weight="700" fill="#ffffff">Inventory alerts</text>
+  <text x="778" y="371" font-size="18" fill="#e6e0d6">inventory_alerts()</text>
+  <text x="778" y="392" font-size="18" fill="#e6e0d6">gpt-4o · json_object</text>
+  <text x="778" y="413" font-size="18" fill="#e6e0d6">low stock · blocked</text>
+
+  <rect x="760" y="455" width="285" height="115" rx="14" fill="#0E9F7A"/>
+  <text x="778" y="489" font-size="25" font-weight="700" fill="#ffffff">BOM reasoning</text>
+  <text x="778" y="516" font-size="18" fill="#e6e0d6">relationship_evaluation</text>
+  <text x="778" y="537" font-size="18" fill="#e6e0d6">gpt-4 · t=0.2 · 700 tok</text>
+  <text x="778" y="558" font-size="18" fill="#e6e0d6">reads 39-row BOM table</text>
+
+  <rect x="760" y="600" width="285" height="115" rx="14" fill="#0E9F7A"/>
+  <text x="778" y="634" font-size="25" font-weight="700" fill="#ffffff">General Q&amp;A</text>
+  <text x="778" y="661" font-size="18" fill="#e6e0d6">general_questions()</text>
+  <text x="778" y="682" font-size="18" fill="#e6e0d6">gpt-4o · json_object</text>
+  <text x="778" y="703" font-size="18" fill="#e6e0d6">BOM table + 100 orders</text>
+
+  <!-- ══════ Group: Cloud ══════ -->
+  <rect x="1100" y="60" width="270" height="800" rx="20" fill="#2e2b28" stroke="#4a463f" stroke-width="2"/>
+  <text x="1120" y="99" font-size="24" font-weight="700" fill="#c9c3b8">Cloud</text>
+
+  <rect x="1118" y="115" width="234" height="125" rx="14" fill="#B34A3E"/>
+  <text x="1134" y="148" font-size="25" font-weight="700" fill="#ffffff">OpenAI API</text>
+  <text x="1134" y="175" font-size="18" fill="#e6e0d6">gpt-3.5-turbo · t=0</text>
+  <text x="1134" y="197" font-size="18" fill="#e6e0d6">gpt-4o · json mode</text>
+  <text x="1134" y="219" font-size="18" fill="#e6e0d6">gpt-4 · evaluation</text>
+
+  <rect x="1118" y="380" width="234" height="125" rx="14" fill="#6D5BD8"/>
+  <text x="1134" y="413" font-size="25" font-weight="700" fill="#ffffff">Firestore</text>
+  <text x="1134" y="440" font-size="18" fill="#e6e0d6">39 parts · 98 supply</text>
+  <text x="1134" y="462" font-size="18" fill="#e6e0d6">100 orders · 200 sales</text>
+  <text x="1134" y="484" font-size="18" fill="#e6e0d6">6 specs (BOM graph)</text>
+
+  <rect x="1118" y="660" width="234" height="125" rx="14" fill="#B34A3E"/>
+  <text x="1134" y="693" font-size="25" font-weight="700" fill="#ffffff">Slack Web API</text>
+  <text x="1134" y="720" font-size="18" fill="#e6e0d6">slack_sdk WebClient</text>
+  <text x="1134" y="742" font-size="18" fill="#e6e0d6">chat_postMessage →</text>
+  <text x="1134" y="764" font-size="18" fill="#e6e0d6">DM to SLACK_CHANNEL</text>
+
+  <!-- ══════ Flows ══════ -->
+  <!-- /api/chat -> router -->
+  <line x1="332" y1="210" x2="441" y2="210" stroke="#E8A838" stroke-width="3" marker-end="url(#mP)"/>
+  <text x="388" y="198" font-size="17" fill="#cfc9bf" text-anchor="middle">hugo.chat()</text>
+  <!-- router -> /api/chat response -->
+  <line x1="445" y1="150" x2="336" y2="150" stroke="#b0aaa0" stroke-width="2.5" marker-end="url(#mI)"/>
+  <text x="388" y="138" font-size="17" fill="#cfc9bf" text-anchor="middle">{response}</text>
+  <!-- /api/chat -> notify-slack (browser hop) -->
+  <line x1="195" y1="240" x2="195" y2="291" stroke="#9a948a" stroke-width="2.5" stroke-dasharray="7 7" marker-end="url(#mA)"/>
+  <text x="207" y="272" font-size="17" fill="#cfc9bf">reply → alert</text>
+  <!-- notify-slack -> Slack -->
+  <polyline points="332,380 388,380 388,750 1114,750" fill="none" stroke="#9a948a" stroke-width="2.5" stroke-dasharray="7 7" marker-end="url(#mA)"/>
+  <text x="750" y="778" font-size="17" fill="#cfc9bf" text-anchor="middle">POST /api/notify-slack → chat_postMessage</text>
+  <!-- router <-> OpenAI -->
+  <line x1="1045" y1="235" x2="1114" y2="235" stroke="#E8A838" stroke-width="3" marker-end="url(#mP)"/>
+  <text x="1082" y="282" font-size="17" fill="#cfc9bf" text-anchor="middle">chat.completions</text>
+  <!-- LLM tools -> OpenAI (nested) -->
+  <polyline points="1045,340 1235,340 1235,246" fill="none" stroke="#E8A838" stroke-width="3" marker-end="url(#mP)"/>
+  <text x="1140" y="325" font-size="17" fill="#cfc9bf" text-anchor="middle">nested gpt-4 / gpt-4o</text>
+  <!-- Firestore -> tools (boot load) -->
+  <line x1="1118" y1="440" x2="1050" y2="468" stroke="#b0aaa0" stroke-width="2.5" marker-end="url(#mI)"/>
+  <text x="1160" y="540" font-size="17" fill="#cfc9bf" text-anchor="middle">boot: stream + BOM table</text>
+  <!-- router <-> tools loop -->
+  <line x1="600" y1="250" x2="600" y2="306" stroke="#E8A838" stroke-width="3" marker-end="url(#mP)"/>
+  <line x1="900" y1="310" x2="900" y2="254" stroke="#b0aaa0" stroke-width="2.5" marker-end="url(#mI)"/>
+  <text x="750" y="285" font-size="17" fill="#cfc9bf" text-anchor="middle">invoke tool ⇄ result → scratchpad</text>
+
+  <!-- ══════ Legend ══════ -->
+  <line x1="60" y1="895" x2="110" y2="895" stroke="#E8A838" stroke-width="3"/>
+  <text x="120" y="901" font-size="17" fill="#cfc9bf">primary flow</text>
+  <line x1="270" y1="895" x2="320" y2="895" stroke="#b0aaa0" stroke-width="2.5"/>
+  <text x="330" y="901" font-size="17" fill="#cfc9bf">in-process / return</text>
+  <line x1="540" y1="895" x2="590" y2="895" stroke="#9a948a" stroke-width="2.5" stroke-dasharray="7 7"/>
+  <text x="600" y="901" font-size="17" fill="#cfc9bf">async, fired after data import</text>
+
+  <text x="1360" y="930" font-size="15" fill="#8a847a" text-anchor="end">models/tools: backEnd/hugo/hugo.py · doc counts: backEnd/data/*.json seeds</text>
+</svg>
