@@ -187,6 +187,8 @@ Swerve uses **LangChain-powered agents** to automate repetitive procurement anal
    * Converts key changes (low stock, delivery slippage, supplier risk)
      into concise team alerts.
 
+<img src="docs/technique_bom.svg" alt="BOM dependency graph pipeline: Firestore parts and specs built into a networkx graph that Hugo's agents reason over" width="900"/>
+
 ---
 
 <a id="langchain-agents"></a>
@@ -254,6 +256,8 @@ Here’s the lifecycle:
    * Clear next steps, supporting numbers, and assumptions when needed.
 
 This makes Swerve **automation-first** without being a black box.
+
+<img src="docs/agent_loop.svg" alt="Agent self-correction loop with tiered extraction" width="900"/>
 
 
 ### Why Agents (Not Just One Chatbot)?
