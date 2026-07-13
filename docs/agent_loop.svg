@@ -1,132 +1,108 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 950" font-family="'DM Sans', -apple-system, 'Helvetica Neue', Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="950" viewBox="0 0 1400 950" font-family="'DM Sans', -apple-system, 'Helvetica Neue', Arial, sans-serif">
   <defs>
-    <marker id="mP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#E8A838"/></marker>
-    <marker id="mI" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b0aaa0"/></marker>
-    <marker id="mA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9a948a"/></marker>
+    <marker id="arrowP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#E8A838"/></marker>
+    <marker id="arrowI" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b0aaa0"/></marker>
   </defs>
+  <rect x="8" y="8" width="1384" height="934" fill="#242220" rx="26"/>
 
-  <rect x="8" y="8" width="1384" height="934" rx="26" fill="#242220"/>
+  <!-- ================= TOP GROUP: SELF-CORRECTION LOOP ================= -->
+  <rect x="40" y="40" width="1320" height="370" fill="#2e2b28" stroke="#4a463f" stroke-width="2" rx="20"/>
+  <text x="64" y="75" font-size="24" font-weight="bold" fill="#c9c3b8">SELF-CORRECTION LOOP — LangGraph</text>
 
-  <!-- ══════ Group: Flask API ══════ -->
-  <rect x="40" y="60" width="310" height="395" rx="20" fill="#2e2b28" stroke="#4a463f" stroke-width="2"/>
-  <text x="60" y="99" font-size="24" font-weight="700" fill="#c9c3b8">Flask API :5050</text>
+  <rect x="70" y="100" width="330" height="110" fill="#0E9F7A" rx="14"/>
+  <text x="86" y="132" font-size="25" font-weight="bold" fill="#ffffff">Extractor Agent</text>
+  <text x="86" y="158" font-size="18" fill="#e6e0d6">runs Tiers 1–4 (below)</text>
+  <text x="86" y="181" font-size="18" fill="#e6e0d6">fills URAR sections/fields</text>
+  <text x="86" y="204" font-size="18" fill="#e6e0d6">per-field conf + source</text>
 
-  <rect x="58" y="115" width="274" height="125" rx="14" fill="#B8842C"/>
-  <text x="76" y="148" font-size="25" font-weight="700" fill="#ffffff">POST /api/chat</text>
-  <text x="76" y="175" font-size="18" fill="#e6e0d6">single-shot {query}</text>
-  <text x="76" y="197" font-size="18" fill="#e6e0d6">from HugoChat UI, or</text>
-  <text x="76" y="219" font-size="18" fill="#e6e0d6">auto after data import</text>
+  <rect x="540" y="100" width="360" height="110" fill="#0E9F7A" rx="14"/>
+  <text x="556" y="132" font-size="25" font-weight="bold" fill="#ffffff">Verifier Agent</text>
+  <text x="556" y="158" font-size="18" fill="#e6e0d6">rule checks + LLM skepticism</text>
+  <text x="556" y="181" font-size="18" fill="#e6e0d6">vision_recheck $0.05–0.10</text>
+  <text x="556" y="204" font-size="18" fill="#e6e0d6">flags OCR + implausible values</text>
 
-  <rect x="58" y="295" width="274" height="125" rx="14" fill="#B8842C"/>
-  <text x="76" y="328" font-size="25" font-weight="700" fill="#ffffff">/api/notify-slack</text>
-  <text x="76" y="355" font-size="18" fill="#e6e0d6">browser formats reply</text>
-  <text x="76" y="377" font-size="18" fill="#e6e0d6">into :warning: alert</text>
-  <text x="76" y="399" font-size="18" fill="#e6e0d6">text, post_message()</text>
+  <rect x="990" y="100" width="340" height="110" fill="#0E9F7A" rx="14"/>
+  <text x="1006" y="132" font-size="25" font-weight="bold" fill="#ffffff">Corrector Agent</text>
+  <text x="1006" y="158" font-size="18" fill="#e6e0d6">retry with DIFFERENT method</text>
+  <text x="1006" y="181" font-size="18" fill="#e6e0d6">azure_di ↔ vision swap</text>
+  <text x="1006" y="204" font-size="18" fill="#e6e0d6">e.g. OCR 'I995' → 1995</text>
 
-  <!-- ══════ Group: Hugo AgentExecutor ══════ -->
-  <rect x="420" y="60" width="650" height="680" rx="20" fill="#2e2b28" stroke="#4a463f" stroke-width="2"/>
-  <text x="440" y="99" font-size="24" font-weight="700" fill="#c9c3b8">Hugo AgentExecutor — hugo.py</text>
+  <rect x="70" y="255" width="330" height="110" fill="#B8842C" rx="14"/>
+  <text x="86" y="287" font-size="25" font-weight="bold" fill="#ffffff">Result + Audit Trail</text>
+  <text x="86" y="313" font-size="18" fill="#e6e0d6">agent_calls + field_history</text>
+  <text x="86" y="336" font-size="18" fill="#e6e0d6">conf = min(avg, critical)</text>
+  <text x="86" y="359" font-size="18" fill="#e6e0d6">low conf → needs_review</text>
 
-  <rect x="445" y="115" width="600" height="135" rx="14" fill="#0E9F7A"/>
-  <text x="463" y="148" font-size="25" font-weight="700" fill="#ffffff">gpt-3.5-turbo agent router</text>
-  <text x="463" y="175" font-size="18" fill="#e6e0d6">ChatOpenAI(temperature=0).bind_tools(6 tools)</text>
-  <text x="463" y="197" font-size="18" fill="#e6e0d6">ConversationBufferMemory + tool-call scratchpad</text>
-  <text x="463" y="219" font-size="18" fill="#e6e0d6">OpenAIToolsAgentOutputParser, handle_parsing_errors</text>
+  <rect x="540" y="255" width="360" height="110" fill="#6D5BD8" rx="14"/>
+  <text x="556" y="287" font-size="25" font-weight="bold" fill="#ffffff">Route Decision</text>
+  <text x="556" y="313" font-size="18" fill="#e6e0d6">all_plausible → END</text>
+  <text x="556" y="336" font-size="18" fill="#e6e0d6">iter &lt; max(2) → corrector</text>
+  <text x="556" y="359" font-size="18" fill="#e6e0d6">max reached → END + review</text>
 
-  <!-- tools col 1 (pure Python) -->
-  <rect x="445" y="310" width="285" height="115" rx="14" fill="#0E9F7A"/>
-  <text x="463" y="344" font-size="25" font-weight="700" fill="#ffffff">Low-stock scan</text>
-  <text x="463" y="371" font-size="18" fill="#e6e0d6">check_low_stocks()</text>
-  <text x="463" y="392" font-size="18" fill="#e6e0d6">quantity &lt;= min_stock</text>
-  <text x="463" y="413" font-size="18" fill="#e6e0d6">pure-Python filter</text>
+  <line x1="400" y1="155" x2="536" y2="155" stroke="#E8A838" stroke-width="3" marker-end="url(#arrowP)"/>
+  <text x="470" y="143" font-size="17" fill="#cfc9bf" text-anchor="middle">fields + conf</text>
 
-  <rect x="445" y="455" width="285" height="115" rx="14" fill="#0E9F7A"/>
-  <text x="463" y="489" font-size="25" font-weight="700" fill="#ffffff">Supplier lookup</text>
-  <text x="463" y="516" font-size="18" fill="#e6e0d6">find_supplier_for_part</text>
-  <text x="463" y="537" font-size="18" fill="#e6e0d6">supply rows by part_id</text>
-  <text x="463" y="558" font-size="18" fill="#e6e0d6">pure-Python filter</text>
+  <line x1="720" y1="210" x2="720" y2="251" stroke="#b0aaa0" stroke-width="2.5" marker-end="url(#arrowI)"/>
 
-  <rect x="445" y="600" width="285" height="115" rx="14" fill="#0E9F7A"/>
-  <text x="463" y="634" font-size="25" font-weight="700" fill="#ffffff">Pending orders</text>
-  <text x="463" y="661" font-size="18" fill="#e6e0d6">check_pending_orders()</text>
-  <text x="463" y="682" font-size="18" fill="#e6e0d6">status == 'ordered'</text>
-  <text x="463" y="703" font-size="18" fill="#e6e0d6">pure-Python filter</text>
+  <path d="M900,310 H1160 V214" fill="none" stroke="#E8A838" stroke-width="3" marker-end="url(#arrowP)"/>
+  <text x="935" y="298" font-size="17" fill="#cfc9bf">iter &lt; 2 → correct</text>
 
-  <!-- tools col 2 (nested LLM) -->
-  <rect x="760" y="310" width="285" height="115" rx="14" fill="#0E9F7A"/>
-  <text x="778" y="344" font-size="25" font-weight="700" fill="#ffffff">Inventory alerts</text>
-  <text x="778" y="371" font-size="18" fill="#e6e0d6">inventory_alerts()</text>
-  <text x="778" y="392" font-size="18" fill="#e6e0d6">gpt-4o · json_object</text>
-  <text x="778" y="413" font-size="18" fill="#e6e0d6">low stock · blocked</text>
+  <line x1="990" y1="155" x2="904" y2="155" stroke="#E8A838" stroke-width="3" marker-end="url(#arrowP)"/>
+  <text x="945" y="143" font-size="17" fill="#cfc9bf" text-anchor="middle">re-verify</text>
 
-  <rect x="760" y="455" width="285" height="115" rx="14" fill="#0E9F7A"/>
-  <text x="778" y="489" font-size="25" font-weight="700" fill="#ffffff">BOM reasoning</text>
-  <text x="778" y="516" font-size="18" fill="#e6e0d6">relationship_evaluation</text>
-  <text x="778" y="537" font-size="18" fill="#e6e0d6">gpt-4 · t=0.2 · 700 tok</text>
-  <text x="778" y="558" font-size="18" fill="#e6e0d6">reads 39-row BOM table</text>
+  <line x1="540" y1="310" x2="404" y2="310" stroke="#E8A838" stroke-width="3" marker-end="url(#arrowP)"/>
+  <text x="470" y="298" font-size="17" fill="#cfc9bf" text-anchor="middle">all_plausible</text>
+  <text x="470" y="332" font-size="17" fill="#cfc9bf" text-anchor="middle">or max iter</text>
 
-  <rect x="760" y="600" width="285" height="115" rx="14" fill="#0E9F7A"/>
-  <text x="778" y="634" font-size="25" font-weight="700" fill="#ffffff">General Q&amp;A</text>
-  <text x="778" y="661" font-size="18" fill="#e6e0d6">general_questions()</text>
-  <text x="778" y="682" font-size="18" fill="#e6e0d6">gpt-4o · json_object</text>
-  <text x="778" y="703" font-size="18" fill="#e6e0d6">BOM table + 100 orders</text>
+  <!-- ================= BOTTOM-LEFT GROUP: TIERED EXTRACTION ================= -->
+  <rect x="40" y="440" width="900" height="360" fill="#2e2b28" stroke="#4a463f" stroke-width="2" rx="20"/>
+  <text x="64" y="475" font-size="24" font-weight="bold" fill="#c9c3b8">TIERED EXTRACTION — inside the Extractor</text>
 
-  <!-- ══════ Group: Cloud ══════ -->
-  <rect x="1100" y="60" width="270" height="800" rx="20" fill="#2e2b28" stroke="#4a463f" stroke-width="2"/>
-  <text x="1120" y="99" font-size="24" font-weight="700" fill="#c9c3b8">Cloud</text>
+  <rect x="70" y="500" width="390" height="115" fill="#6D5BD8" rx="14"/>
+  <text x="86" y="533" font-size="25" font-weight="bold" fill="#ffffff">Tier 1 — MISMO XML</text>
+  <text x="86" y="560" font-size="18" fill="#e6e0d6">parsed fields → conf 1.0</text>
+  <text x="86" y="583" font-size="18" fill="#e6e0d6">overall ≥ 0.95 → return as-is</text>
+  <text x="86" y="606" font-size="18" fill="#e6e0d6">authoritative when present</text>
 
-  <rect x="1118" y="115" width="234" height="125" rx="14" fill="#B34A3E"/>
-  <text x="1134" y="148" font-size="25" font-weight="700" fill="#ffffff">OpenAI API</text>
-  <text x="1134" y="175" font-size="18" fill="#e6e0d6">gpt-3.5-turbo · t=0</text>
-  <text x="1134" y="197" font-size="18" fill="#e6e0d6">gpt-4o · json mode</text>
-  <text x="1134" y="219" font-size="18" fill="#e6e0d6">gpt-4 · evaluation</text>
+  <rect x="510" y="500" width="390" height="115" fill="#B34A3E" rx="14"/>
+  <text x="526" y="533" font-size="25" font-weight="bold" fill="#ffffff">Tier 2 — Azure Doc Intel</text>
+  <text x="526" y="560" font-size="18" fill="#e6e0d6">key-value pairs + table cells</text>
+  <text x="526" y="583" font-size="18" fill="#e6e0d6">native per-field confidence</text>
+  <text x="526" y="606" font-size="18" fill="#e6e0d6">merge only if conf improves</text>
 
-  <rect x="1118" y="380" width="234" height="125" rx="14" fill="#6D5BD8"/>
-  <text x="1134" y="413" font-size="25" font-weight="700" fill="#ffffff">Firestore</text>
-  <text x="1134" y="440" font-size="18" fill="#e6e0d6">39 parts · 98 supply</text>
-  <text x="1134" y="462" font-size="18" fill="#e6e0d6">100 orders · 200 sales</text>
-  <text x="1134" y="484" font-size="18" fill="#e6e0d6">6 specs (BOM graph)</text>
+  <rect x="70" y="655" width="390" height="115" fill="#B34A3E" rx="14"/>
+  <text x="86" y="688" font-size="25" font-weight="bold" fill="#ffffff">Tier 3 — GPT-4o Vision</text>
+  <text x="86" y="715" font-size="18" fill="#e6e0d6">targets low-conf + missing</text>
+  <text x="86" y="738" font-size="18" fill="#e6e0d6">capped at 20 fields per pass</text>
+  <text x="86" y="761" font-size="18" fill="#e6e0d6">self-reported conf 0.6–0.9</text>
 
-  <rect x="1118" y="660" width="234" height="125" rx="14" fill="#B34A3E"/>
-  <text x="1134" y="693" font-size="25" font-weight="700" fill="#ffffff">Slack Web API</text>
-  <text x="1134" y="720" font-size="18" fill="#e6e0d6">slack_sdk WebClient</text>
-  <text x="1134" y="742" font-size="18" fill="#e6e0d6">chat_postMessage →</text>
-  <text x="1134" y="764" font-size="18" fill="#e6e0d6">DM to SLACK_CHANNEL</text>
+  <rect x="510" y="655" width="390" height="115" fill="#0E9F7A" rx="14"/>
+  <text x="526" y="688" font-size="25" font-weight="bold" fill="#ffffff">Tier 4 — Regex Fallback</text>
+  <text x="526" y="715" font-size="18" fill="#e6e0d6">regex over tables.jsonl text</text>
+  <text x="526" y="738" font-size="18" fill="#e6e0d6">only empty critical fields</text>
+  <text x="526" y="761" font-size="18" fill="#e6e0d6">assigns conf 0.70–0.80</text>
 
-  <!-- ══════ Flows ══════ -->
-  <!-- /api/chat -> router -->
-  <line x1="332" y1="210" x2="441" y2="210" stroke="#E8A838" stroke-width="3" marker-end="url(#mP)"/>
-  <text x="388" y="198" font-size="17" fill="#cfc9bf" text-anchor="middle">hugo.chat()</text>
-  <!-- router -> /api/chat response -->
-  <line x1="445" y1="150" x2="336" y2="150" stroke="#b0aaa0" stroke-width="2.5" marker-end="url(#mI)"/>
-  <text x="388" y="138" font-size="17" fill="#cfc9bf" text-anchor="middle">{response}</text>
-  <!-- /api/chat -> notify-slack (browser hop) -->
-  <line x1="195" y1="240" x2="195" y2="291" stroke="#9a948a" stroke-width="2.5" stroke-dasharray="7 7" marker-end="url(#mA)"/>
-  <text x="207" y="272" font-size="17" fill="#cfc9bf">reply → alert</text>
-  <!-- notify-slack -> Slack -->
-  <polyline points="332,380 388,380 388,750 1114,750" fill="none" stroke="#9a948a" stroke-width="2.5" stroke-dasharray="7 7" marker-end="url(#mA)"/>
-  <text x="750" y="778" font-size="17" fill="#cfc9bf" text-anchor="middle">POST /api/notify-slack → chat_postMessage</text>
-  <!-- router <-> OpenAI -->
-  <line x1="1045" y1="235" x2="1114" y2="235" stroke="#E8A838" stroke-width="3" marker-end="url(#mP)"/>
-  <text x="1082" y="282" font-size="17" fill="#cfc9bf" text-anchor="middle">chat.completions</text>
-  <!-- LLM tools -> OpenAI (nested) -->
-  <polyline points="1045,340 1235,340 1235,246" fill="none" stroke="#E8A838" stroke-width="3" marker-end="url(#mP)"/>
-  <text x="1140" y="325" font-size="17" fill="#cfc9bf" text-anchor="middle">nested gpt-4 / gpt-4o</text>
-  <!-- Firestore -> tools (boot load) -->
-  <line x1="1118" y1="440" x2="1050" y2="468" stroke="#b0aaa0" stroke-width="2.5" marker-end="url(#mI)"/>
-  <text x="1160" y="540" font-size="17" fill="#cfc9bf" text-anchor="middle">boot: stream + BOM table</text>
-  <!-- router <-> tools loop -->
-  <line x1="600" y1="250" x2="600" y2="306" stroke="#E8A838" stroke-width="3" marker-end="url(#mP)"/>
-  <line x1="900" y1="310" x2="900" y2="254" stroke="#b0aaa0" stroke-width="2.5" marker-end="url(#mI)"/>
-  <text x="750" y="285" font-size="17" fill="#cfc9bf" text-anchor="middle">invoke tool ⇄ result → scratchpad</text>
+  <line x1="460" y1="558" x2="506" y2="558" stroke="#b0aaa0" stroke-width="2.5" marker-end="url(#arrowI)"/>
+  <line x1="705" y1="615" x2="273" y2="652" stroke="#b0aaa0" stroke-width="2.5" marker-end="url(#arrowI)"/>
+  <text x="720" y="642" font-size="17" fill="#cfc9bf">gaps remain</text>
+  <line x1="460" y1="712" x2="506" y2="712" stroke="#b0aaa0" stroke-width="2.5" marker-end="url(#arrowI)"/>
 
-  <!-- ══════ Legend ══════ -->
-  <line x1="60" y1="895" x2="110" y2="895" stroke="#E8A838" stroke-width="3"/>
-  <text x="120" y="901" font-size="17" fill="#cfc9bf">primary flow</text>
-  <line x1="270" y1="895" x2="320" y2="895" stroke="#b0aaa0" stroke-width="2.5"/>
-  <text x="330" y="901" font-size="17" fill="#cfc9bf">in-process / return</text>
-  <line x1="540" y1="895" x2="590" y2="895" stroke="#9a948a" stroke-width="2.5" stroke-dasharray="7 7"/>
-  <text x="600" y="901" font-size="17" fill="#cfc9bf">async, fired after data import</text>
+  <!-- ================= BOTTOM-RIGHT: CONFIDENCE GATES (numbers tiles) ================= -->
+  <rect x="980" y="470" width="380" height="150" fill="#2e2b28" rx="20"/>
+  <text x="1170" y="545" font-size="64" font-weight="bold" fill="#E8A838" text-anchor="middle">≥ 0.90</text>
+  <text x="1170" y="580" font-size="20" fill="#cfc9bf" text-anchor="middle">critical-field gate</text>
+  <text x="1170" y="606" font-size="15" fill="#8a847a" text-anchor="middle">addr · year · GLA · value · price · date</text>
 
-  <text x="1360" y="930" font-size="15" fill="#8a847a" text-anchor="end">models/tools: backEnd/hugo/hugo.py · doc counts: backEnd/data/*.json seeds</text>
+  <rect x="980" y="650" width="380" height="150" fill="#2e2b28" rx="20"/>
+  <text x="1170" y="725" font-size="64" font-weight="bold" fill="#E8A838" text-anchor="middle">2</text>
+  <text x="1170" y="760" font-size="20" fill="#cfc9bf" text-anchor="middle">max corrector iterations</text>
+  <text x="1170" y="786" font-size="15" fill="#8a847a" text-anchor="middle">then END with needs_review</text>
+
+  <text x="1170" y="835" font-size="15" fill="#8a847a" text-anchor="middle">field_mappings.py · orchestrator.py</text>
+
+  <!-- ================= LEGEND ================= -->
+  <line x1="60" y1="865" x2="130" y2="865" stroke="#E8A838" stroke-width="3" marker-end="url(#arrowP)"/>
+  <text x="140" y="871" font-size="17" fill="#cfc9bf">control flow</text>
+  <line x1="330" y1="865" x2="400" y2="865" stroke="#b0aaa0" stroke-width="2.5" marker-end="url(#arrowI)"/>
+  <text x="410" y="871" font-size="17" fill="#cfc9bf">fallback chain (merge best-confidence field wins)</text>
 </svg>
